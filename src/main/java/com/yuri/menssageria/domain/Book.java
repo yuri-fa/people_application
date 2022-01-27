@@ -1,12 +1,16 @@
 package com.yuri.menssageria.domain;
 
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 @Entity
-@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Book {
 
     @Id
@@ -14,7 +18,7 @@ public class Book {
     @GenericGenerator(name = "uuid",strategy="uuid2")
     private String id;
     private String name;
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private People people;
 
 
